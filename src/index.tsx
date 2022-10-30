@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {ThemeProvider} from 'styled-components';
-import {lightheme} from './theme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import { RecoilRoot } from 'recoil';
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
+    <RecoilRoot>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={lightheme}>
-        <App />
-      </ThemeProvider>
+      <App />
     </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
 );

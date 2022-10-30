@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { RecoilRoot } from 'recoil';
-import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import {createGlobalStyle, ThemeProvider} from 'styled-components';
+import { isDarkAtom } from './atom';
 import { darkTheme, lightheme } from './theme';
-import ToDoList from './Components/ToDoList';
-
+import Todolist from './components/Todolist';
+import Header from './components/Header';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -66,27 +66,18 @@ a {
   text-decoration:none;
 }
 `
-const DarkBtn = styled.button`
-background-color:#aaaaaa;
-display:flex;
-width:100px;
-height:50px;
-align-items:center;
-font-size:20px;
-justify-content:center;
-margin-left:1225px;
-`
 
 function App() {
-  const [isDark,setisDark] = useState(false);
-  const toggleMode = () => {
-    setisDark((prev)=>!prev)
-  }
+  const  isDark = useRecoilValue(isDarkAtom)
+
   return (
-   <RecoilRoot>
-   <GlobalStyle/>
-   <ToDoList/>
-   </RecoilRoot>
+    <>
+    <ThemeProvider theme={isDark ? darkTheme : lightheme}>
+    <GlobalStyle/>
+    <Header/>
+    <Todolist/>
+    </ThemeProvider>
+    </>
   );
 }
 
