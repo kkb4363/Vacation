@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import { isDarkAtom } from './atom';
 import { darkTheme, lightheme } from './theme';
-import Todolist from './components/Todolist';
+import Todos from './components/Todos';
 import Header from './components/Header';
 
 const GlobalStyle = createGlobalStyle`
@@ -75,7 +75,7 @@ function App() {
     <ThemeProvider theme={isDark ? darkTheme : lightheme}>
     <GlobalStyle/>
     <Header/>
-    <Todolist/>
+    <Todos/>
     </ThemeProvider>
     </>
   );

@@ -5,14 +5,15 @@ import { BiBrightnessHalf } from "react-icons/bi";
 
 const Navbar = styled.div`
 top:0;
-background-color: tomato;
+background-color: #313131;
 width:100%;
-height:70px;
+height:60px;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:30px;
 font-weight:bold;
+color:#bababa;
 position:relative;
 div{
     position:absolute;
