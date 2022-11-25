@@ -1,9 +1,10 @@
 import { useRecoilValue } from 'recoil';
-import {createGlobalStyle, ThemeProvider} from 'styled-components';
-import { isDarkAtom } from './atom';
+import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import { darkTheme, lightheme } from './theme';
-import Todos from './components/Todos';
-import Header from './components/Header';
+import ToDoList from './Components/ToDoList';
+import Header from './Components/Header';
+import { isDarkAtom } from './atom';
+
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -68,16 +69,17 @@ a {
 `
 
 function App() {
-  const  isDark = useRecoilValue(isDarkAtom)
+  const isDark = useRecoilValue(isDarkAtom);
 
   return (
-    <>
-    <ThemeProvider theme={isDark ? darkTheme : lightheme}>
-    <GlobalStyle/>
-    <Header/>
-    <Todos/>
-    </ThemeProvider>
-    </>
+  <>
+  <GlobalStyle/>
+  <ThemeProvider theme={isDark? darkTheme : lightheme}>
+  <Header/>
+  <ToDoList/>
+  </ThemeProvider>
+  </>
+  
   );
 }
 

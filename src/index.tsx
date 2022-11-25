@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot} from 'recoil';
+
 const queryClient = new QueryClient();
 
 ReactDOM.render(
+  
   <React.StrictMode>
     <RecoilRoot>
     <QueryClientProvider client={queryClient}>
-      <App />
+        <App />
     </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,
