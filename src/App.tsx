@@ -1,10 +1,9 @@
 import { useRecoilValue } from 'recoil';
-import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import { darkTheme, lightheme } from './theme';
-import ToDoList from './Components/ToDoList';
-import Header from './Components/Header';
+import Header from './components/Header';
 import { isDarkAtom } from './atom';
-
+import { Outlet } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -73,10 +72,11 @@ function App() {
 
   return (
   <>
-  <GlobalStyle/>
+  
   <ThemeProvider theme={isDark? darkTheme : lightheme}>
+  <GlobalStyle/>
   <Header/>
-  <ToDoList/>
+  <Outlet/>
   </ThemeProvider>
   </>
   
