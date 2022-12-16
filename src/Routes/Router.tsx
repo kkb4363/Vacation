@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import Five from "../components/Five";
+import Four from "../components/Four";
 import Main from "../components/Main";
-import Second from "../components/Second";
+import Calander from "../components/Calander";
+import Third from "../components/Third";
 
 
 
@@ -15,8 +18,20 @@ const Router = createBrowserRouter([
                 element:<Main/>,
             },
             {
-                path:'/second',
-                element:<Second/>
+                path:'/calander',
+                element:<Calander/>
+            },
+            {
+                path:'/third',
+                element:<Third/>
+            },
+            {
+                path:'/four',
+                element:<Four/>
+            },
+            {
+                path:'/five',
+                element:<Five/>
             }
         ]
     }

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { isDarkAtom } from "../atom";
 import { BiBrightnessHalf } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import '../Style.css';
 
 const Navbar = styled.div`
 top:0;
@@ -16,11 +17,6 @@ font-size:30px;
 font-weight:bold;
 color:#bababa;
 position:relative;
-div:first-child{
-    position:absolute;
-    font-size:18px;
-    left:0;
-    margin-left:180px;
 `
 
 function Header(){
@@ -32,8 +28,21 @@ function Header(){
 return(
     <>
     <Navbar>
-        <div><Link style={{color:'white' , opacity:0.7}} to='/'>Just Do it</Link></div>
-        <div style={{position:'absolute', marginRight:'800px', fontSize:'18px'}}><Link style={{color:'white' , opacity:0.7}} to='/Second'>Go Secondpage</Link></div>
+        <Link className="HeaderComponents" style={{marginLeft:'180px',left:0}} to='/'>
+            Just Do it
+        </Link>
+        <Link className="HeaderComponents" style={{marginRight:'800px'}} to='/calander'>
+            Go To Second
+        </Link>
+        <Link className="HeaderComponents" style={{marginRight:'330px'}} to='/third'>
+            Go To Third
+        </Link>
+        <Link className="HeaderComponents" style={{marginRight:'-150px'}} to='/four'>
+            Go To Four
+        </Link>
+        <Link className="HeaderComponents" style={{marginRight:'-600px'}} to='/five'>
+            Go To Five
+        </Link>
         <BiBrightnessHalf style={{position:'absolute', right:0 ,marginRight:'180px'}} onClick={OnDark}/>
     </Navbar>
 
