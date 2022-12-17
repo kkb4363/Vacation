@@ -3,6 +3,7 @@ import {useState} from 'react';
 import { addMonths, subMonths } from 'date-fns';
 import CHeader from '../Calander/CHeader';
 import CDays from '../Calander/CDays';
+import CMain from '../Calander/CMain';
 
 function Calander(){
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -23,7 +24,7 @@ function Calander(){
 
         <CDays/>
 
-        
+        <CMain currentMonth={currentMonth}/>
         </>
     )
 }

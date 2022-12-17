@@ -4,7 +4,9 @@ const DaysWrapper = styled.div`
 display:flex;
 justify-content:space-between;
 width:880px;
-margin-top:-20px;
+position:absolute;
+margin-top:20px;
+margin-left:400px;
 `
 
 const DaysDiv = styled.div`

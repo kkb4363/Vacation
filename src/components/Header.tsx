@@ -32,7 +32,7 @@ return(
             Just Do it
         </Link>
         <Link className="HeaderComponents" style={{marginRight:'800px'}} to='/calander'>
-            Go To Second
+            Calander
         </Link>
         <Link className="HeaderComponents" style={{marginRight:'330px'}} to='/third'>
             Go To Third
