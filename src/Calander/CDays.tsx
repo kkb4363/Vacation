@@ -6,7 +6,7 @@ justify-content:space-between;
 width:880px;
 position:absolute;
 margin-top:20px;
-margin-left:400px;
+margin-left:180px;
 `
 
 const DaysDiv = styled.div`
@@ -24,7 +24,7 @@ function CDays(){
 
     for(let i=0; i<7; i++){
         days.push(
-            <DaysDiv>
+            <DaysDiv key={date[i]}>
                 {date[i]}
             </DaysDiv>
         )

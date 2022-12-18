@@ -16,7 +16,7 @@ function Calander(){
         setCurrentMonth(addMonths(currentMonth,1));
     };
     return(
-        <>
+        <div style={{position:'absolute'}}>
         <CHeader
             currentMonth={currentMonth}
             prevMonth={prevMonth}
@@ -25,7 +25,7 @@ function Calander(){
         <CDays/>
 
         <CMain currentMonth={currentMonth}/>
-        </>
+        </div>
     )
 }
 

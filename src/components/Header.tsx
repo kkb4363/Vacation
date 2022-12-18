@@ -28,22 +28,22 @@ function Header(){
 return(
     <>
     <Navbar>
-        <Link className="HeaderComponents" style={{marginLeft:'180px',left:0}} to='/'>
+        <Link className="HeaderComponents" style={{marginLeft:'120px',left:0}} to='/'>
             Just Do it
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'800px'}} to='/calander'>
+        <Link className="HeaderComponents" style={{marginRight:'630px'}} to='/calander'>
             Calander
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'330px'}} to='/third'>
+        <Link className="HeaderComponents" style={{marginRight:'240px'}} to='/third'>
             Go To Third
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'-150px'}} to='/four'>
+        <Link className="HeaderComponents" style={{marginRight:'-180px'}} to='/four'>
             Go To Four
         </Link>
         <Link className="HeaderComponents" style={{marginRight:'-600px'}} to='/five'>
             Go To Five
         </Link>
-        <BiBrightnessHalf style={{position:'absolute', right:0 ,marginRight:'180px'}} onClick={OnDark}/>
+        <BiBrightnessHalf style={{position:'absolute', right:0 ,marginRight:'180px',cursor:'pointer'}} onClick={OnDark}/>
     </Navbar>
 
     </> 

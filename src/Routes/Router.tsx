@@ -19,7 +19,13 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/calander',
-                element:<Calander/>
+                element:<Calander/>,
+                children:[
+                    {
+                        path:'/calander/:day',
+                        element:<Calander/>,
+                    }
+                ]
             },
             {
                 path:'/third',
