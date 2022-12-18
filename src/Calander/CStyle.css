@@ -80,3 +80,25 @@
     padding-right: -1000px;
 }
 
+.BigDayWrapper{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:25px;    
+}
+
+.BigDayInput{
+    width:300px;
+    height:300px;
+    display:flex;
+}
+
+.BigDayButton{
+    width:70px;
+    height:70px;
+    color: blue;
+    background-color: aquamarine;
+    margin-top:20px;
+}
+

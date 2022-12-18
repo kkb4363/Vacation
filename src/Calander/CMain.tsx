@@ -1,10 +1,12 @@
 import {addDays, startOfMonth, endOfMonth, endOfWeek, startOfWeek, format} from 'date-fns';
 import { useNavigate } from 'react-router';
-import { useRecoilValue } from 'recoil';
-import { isDarkAtom } from '../atom';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { calState, IForm, isDarkAtom } from '../atom';
 import { useMatch, PathMatch } from "react-router-dom";
 import { motion } from 'framer-motion';
 import styled from "styled-components";
+import {useForm} from 'react-hook-form';
+
 
 const BigDay = styled(motion.div)`
 width:500px;
@@ -14,6 +16,7 @@ position:absolute;
 margin-left:370px;
 top:50px;
 position:fixed;
+color:white;
 `
 
 const Overlay = styled(motion.div)`
@@ -42,8 +45,7 @@ const CMain = (currentMonth:any) => {
     const onOverlayClick = () => {
         Navigate('/calander');
     }
-
-
+    
     let day = startDate;
     let days = [] as any;
     let line = [] as any;
@@ -81,6 +83,13 @@ const CMain = (currentMonth:any) => {
         days = [];
     }
 
+    const setCalander = useSetRecoilState(calState);
+    const {register, handleSubmit, setValue} = useForm<IForm>();
+    const onWrite = ({today}:IForm) => {
+        setCalander(old => [{id:Date.now() , text:today}, ...old] );
+    }
+    
+
     return(
         <div style={{position:'relative'}}>
         {<div className='divWrapper'>
@@ -90,7 +99,12 @@ const CMain = (currentMonth:any) => {
         {DayPathMatch ? 
         <>
         <Overlay onClick={onOverlayClick}/>
-        <BigDay/>
+        <BigDay>
+            <form className='BigDayWrapper' onSubmit={handleSubmit(onWrite)}>
+                    <input className='BigDayInput' {...register('today')} placeholder="Write whatever you want!"/>
+                    <button className='BigDayButton'>ADD</button>
+            </form>
+        </BigDay>
         </> : null}
         </div>
     )
