@@ -12,11 +12,10 @@ width:100%;
 height:60px;
 display:flex;
 align-items:center;
-justify-content:center;
+justify-content:space-around;
 font-size:30px;
 font-weight:bold;
 color:#bababa;
-position:relative;
 `
 
 function Header(){
@@ -28,22 +27,22 @@ function Header(){
 return(
     <>
     <Navbar>
-        <Link className="HeaderComponents" style={{marginLeft:'120px',left:0}} to='/'>
+        <Link className="HeaderComponents" to='/'>
             Just Do it
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'630px'}} to='/calander'>
+        <Link className="HeaderComponents" to='/calander'>
             Calander
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'240px'}} to='/third'>
+        <Link className="HeaderComponents" to='/third'>
             Go To Third
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'-180px'}} to='/four'>
+        <Link className="HeaderComponents" to='/four'>
             Go To Four
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'-600px'}} to='/five'>
+        <Link className="HeaderComponents" to='/five'>
             Go To Five
         </Link>
-        <BiBrightnessHalf style={{position:'absolute', right:0 ,marginRight:'180px',cursor:'pointer'}} onClick={OnDark}/>
+        <BiBrightnessHalf style={{right:0 ,cursor:'pointer'}} onClick={OnDark}/>
     </Navbar>
 
     </> 

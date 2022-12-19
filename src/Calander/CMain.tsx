@@ -13,14 +13,18 @@ width:500px;
 height:500px;
 background-color:rgba(0,0,0,0.5);
 position:absolute;
-margin-left:370px;
-top:50px;
+top:250px;
+display:flex;
+left:0;
+margin:0 auto;
+right:0;
 position:fixed;
 color:white;
 `
 
 const Overlay = styled(motion.div)`
-width:100%;
+width:11000px;
+margin-left:-6000px;
 height:100%;
 position:fixed;
 top:0;
@@ -91,7 +95,7 @@ const CMain = (currentMonth:any) => {
     
 
     return(
-        <div style={{position:'relative'}}>
+        <div>
         {<div className='divWrapper'>
             {line}
         </div>}

@@ -4,9 +4,8 @@ const DaysWrapper = styled.div`
 display:flex;
 justify-content:space-between;
 width:880px;
-position:absolute;
-margin-top:20px;
-margin-left:180px;
+height:60px;
+margin-top:80px;
 `
 
 const DaysDiv = styled.div`
@@ -30,9 +29,7 @@ function CDays(){
         )
     }
     return(
-        <>
         <DaysWrapper>{days}</DaysWrapper>
-        </>
     )
 }
 
