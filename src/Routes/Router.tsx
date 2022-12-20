@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Five from "../components/Five";
 import Four from "../components/Four";
 import Main from "../components/Main";
 import Calander from "../components/Calander";
 import Third from "../components/Third";
+import Login from "../components/Login";
 
 
 
@@ -36,8 +36,8 @@ const Router = createBrowserRouter([
                 element:<Four/>
             },
             {
-                path:'/five',
-                element:<Five/>
+                path:'/login',
+                element:<Login/>
             }
         ]
     }
