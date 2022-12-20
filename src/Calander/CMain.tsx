@@ -103,12 +103,23 @@ const CMain = (currentMonth:any) => {
         {DayPathMatch ? 
         <>
         <Overlay onClick={onOverlayClick}/>
-        <BigDay>
+        
+        {isDark?
+        (<BigDay style={{backgroundColor:'#808080', opacity:0.7}}>
             <form className='BigDayWrapper' onSubmit={handleSubmit(onWrite)}>
                     <input className='BigDayInput' {...register('today')} placeholder="Write whatever you want!"/>
                     <button className='BigDayButton'>ADD</button>
             </form>
-        </BigDay>
+        </BigDay>) 
+        : 
+        (<BigDay>
+            <form className='BigDayWrapper' onSubmit={handleSubmit(onWrite)}>
+                    <input className='BigDayInput' {...register('today')} placeholder="Write whatever you want!"/>
+                    <button className='BigDayButton'>ADD</button>
+            </form>
+        </BigDay>)}
+        
+        
         </> : null}
         </div>
     )

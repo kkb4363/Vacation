@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import {useState} from 'react';
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/exports";
+import axios from "axios";
+import { loginUser } from '../Reducer/UserSlice';
 
 const LoginWrapper = styled.div`
 width:500px;
@@ -24,28 +27,52 @@ font-weight:600;
 
 
 function Login(){
+    const dispatch = useDispatch();
 
+    let user = useSelector((state:any) => {return state.user});
+
+    const [msg, setmsg] = useState('');
     const [ID,setID] = useState('');
     const [Password, setPassword] = useState('');
 
     const onIDHandler = (event:any) => {
         setID(event.currentTarget.value);
-    }
-
+    };
     const onPasswordHandler = (event:any) => {
         setPassword(event.currentTarget.value);
-    }
+    };
 
     const onSubmitHandler = (event:any) => {
         event.preventDefault();
-    }
-    console.log('ID:', ID);
-    console.log('Password' , Password);
+        let body = {
+            ID,
+            Password
+        }
+        axios.post('api주소',body)
+        .then((res)=>{
+            console.log(res.data)
+            switch(res.data.code){
+                case 200:
+                    console.log('login');
+                    dispatch(loginUser(res.data.userInfo));
+                    setmsg('');
+                    break;
+                case 400:
+                    setmsg('ID, Password가 비어있습니다');
+                    break;
+                case 401:
+                    setmsg('존재하지 않는 ID입니다');
+                    break;
+                case 402:
+                    setmsg('Password가 틀립니다.');
+                    break;
+                default:
+                    break;
+            }
+        })
+    };
+    
 
-    let body = {
-        ID: ID,
-        Password: Password,
-    }
     
     return(
         <LoginWrapper>
@@ -54,7 +81,7 @@ function Login(){
                     <input required placeholder="ID" type='text' value={ID} onChange={onIDHandler}/>
                     <label>Password</label>
                     <input required placeholder="Password" type='password' value={Password} onChange={onPasswordHandler}/>
-                <button formAction="">
+                <button type="submit">
                     Login
                 </button>
             </LoginForm>

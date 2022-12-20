@@ -39,7 +39,7 @@ return(
         <Link className="HeaderComponents" to='/four'>
             Go To Four
         </Link>
-        <Link className="HeaderComponents" style={{marginRight:'-600px'}} to='/login'>
+        <Link className="HeaderComponents" to='/login'>
             User
         </Link>
         <BiBrightnessHalf style={{right:0 ,cursor:'pointer'}} onClick={OnDark}/>
