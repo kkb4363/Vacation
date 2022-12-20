@@ -41,43 +41,31 @@
     background-color:#c0c0c0;
 }
 
-
 .divWrapper{
     display:flex;
-    height:900px;
-    width:900px;
+    height:800px;
+    width:800px;
     flex-direction:column;
-    margin-top:50px;
-    padding-left:180px;
 }
 
-/* Header.js CSS 0000년 0월 + 지난달 화살표, 다음달 화살표 */
-.main{
+.CHeader_div{
     display:flex;
-    position:relative;
-    padding-left:180px;
+    justify-content: space-between;
     margin-top: 30px;
-    margin-bottom: -30px;
+    position:absolute;
     width:880px;
-    height:30px;
-    margin-left:180px;
+    height:50px;
 }
 
-.main h5{
+.CHeader_div h5{
     font-size:16px;
     display:flex;
-    margin-left:-150px;
+    margin-left:30px;
 }
 
-.main_white{
-    color:black;
-}
-
-.main_ArrowCss{
-    position:absolute;
+.CHeader_ArrowCss{
     display:flex;
     right:0;
-    padding-right: -1000px;
 }
 
 .BigDayWrapper{
@@ -85,7 +73,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top:25px;    
+    margin-top:50px;
+    margin-left:100px;
+    position:fixed;    
 }
 
 .BigDayInput{

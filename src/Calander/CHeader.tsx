@@ -9,8 +9,8 @@ const CHeader = ({currentMonth, prevMonth, nextMonth}:any) => {
     const isDark = useRecoilValue(isDarkAtom);
 
     return(
-        <>
-        <div className='main'>
+        
+        <div className='CHeader_div'>
             
             {isDark ? 
             <h5>
@@ -23,7 +23,7 @@ const CHeader = ({currentMonth, prevMonth, nextMonth}:any) => {
 
             
 
-            <div className="main_ArrowCss">
+            <div className="CHeader_ArrowCss">
 
             <AiOutlineLeft onClick={prevMonth} style={ArrowStyle}/>
             
@@ -42,7 +42,7 @@ const CHeader = ({currentMonth, prevMonth, nextMonth}:any) => {
             
         
         </div>
-        </>
+        
     )
 }
 

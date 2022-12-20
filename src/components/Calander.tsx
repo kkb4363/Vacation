@@ -4,6 +4,19 @@ import { addMonths, subMonths } from 'date-fns';
 import CHeader from '../Calander/CHeader';
 import CDays from '../Calander/CDays';
 import CMain from '../Calander/CMain';
+import styled from 'styled-components';
+
+const CalanderWrapper = styled.div`
+margin: 0 auto;
+left:0;
+right:0;
+display:flex;
+flex-direction:column;
+width:900px;
+height:900px;
+position:relative;
+`;
+
 
 function Calander(){
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -16,7 +29,7 @@ function Calander(){
         setCurrentMonth(addMonths(currentMonth,1));
     };
     return(
-        <div style={{position:'absolute'}}>
+        <CalanderWrapper>
         <CHeader
             currentMonth={currentMonth}
             prevMonth={prevMonth}
@@ -25,7 +38,7 @@ function Calander(){
         <CDays/>
 
         <CMain currentMonth={currentMonth}/>
-        </div>
+        </CalanderWrapper>
     )
 }
 
