@@ -7,7 +7,6 @@ import { loginUser } from './Reducer/UserSlice';
 const LoginWrapper = styled.div`
 width:500px;
 height:500px;
-background-color:tomato;
 display:flex;
 margin:0 auto;
 left:0;
@@ -21,7 +20,26 @@ const LoginForm = styled.form`
 display:flex;
 justify-content:center;
 flex-direction:column;
+align-items:center;
 font-weight:600;
+span{
+    font-size:25px;
+    margin-bottom:20px;
+}
+input{
+    width:250px;
+    height:50px;
+    border-radius:20px;
+    border:1px solid rgba(0,0,0,0.5);
+    margin-bottom:10px;
+}
+button{
+    width:60px;
+    height:30px;
+    border-radius:30px;
+    border:0px;
+    background-color:#cc9900;
+}
 `
 
 
@@ -67,7 +85,8 @@ function NotLogin(){
     return(
         <LoginWrapper>
             <LoginForm onSubmit={onSubmitHandler}>
-                    <label htmlFor="id">ID</label>
+                    <span>Just Do It에 로그인 하세요</span>
+                    <label htmlFor="id"></label>
                     <input required 
                             placeholder="ID" 
                             type='text' 
@@ -75,7 +94,7 @@ function NotLogin(){
                             id='id'
                             onChange={(e) => setID(e.target.value)} />
 
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password"></label>
                     <input required
                             placeholder="Password" 
                             type='password' 

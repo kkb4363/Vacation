@@ -3,7 +3,7 @@ import App from "../App";
 import Four from "../components/Four";
 import Main from "../components/Main";
 import Calander from "../components/Calander";
-import Third from "../components/Third";
+import Checklist from "../components/Checklist";
 import Login from "../components/Login";
 
 
@@ -30,8 +30,8 @@ const Router = createBrowserRouter([
                 ]
             },
             {
-                path:'/third',
-                element:<Third/>
+                path:'/checklist',
+                element:<Checklist/>
             },
             {
                 path:'/four',

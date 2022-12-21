@@ -5,14 +5,25 @@ import { clearUser } from "./Reducer/UserSlice";
 const LoginWrapper = styled.div`
 width:500px;
 height:500px;
-background-color:tomato;
 display:flex;
+flex-direction:column;
 margin:0 auto;
 left:0;
 justify-content:center;
 align-items:center;
 right:0;
 margin-top:200px;
+p{
+    font-size:26px;
+    margin-bottom:20px;
+}
+button{
+    width:100px;
+    height:30px;
+    background-color:#99ccff;
+    border-radius:30px;
+    border:0px;
+}
 `
 
 function NowLogin(){

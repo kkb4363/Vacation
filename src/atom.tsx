@@ -5,8 +5,8 @@ export const isDarkAtom = atom({
     default:false, // 기본값
 })
 
-export interface IForm{
-    today:string;
+export interface Iform{
+    text:string;
 }
 
 export interface ICal{
@@ -14,7 +14,7 @@ export interface ICal{
     text:string;
 }
 
-export const calState = atom<ICal[]>({
+export const calanderState = atom<ICal[]>({
     key:'Cal',
     default:[],
 })

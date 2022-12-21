@@ -50,8 +50,8 @@
 
 .CHeader_div{
     display:flex;
+    margin-top:100px;
     justify-content: space-between;
-    margin-top: 30px;
     position:absolute;
     width:880px;
     height:50px;
@@ -73,22 +73,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top:50px;
-    margin-left:100px;
     position:fixed;    
 }
 
 .BigDayInput{
-    width:300px;
+    width:400px;
     height:300px;
     display:flex;
+    margin-left:50px;
+    margin-top:50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
 }
 
 .BigDayButton{
-    width:70px;
-    height:70px;
-    color: blue;
-    background-color: aquamarine;
+    width:100px;
+    height:50px;
+    border-radius: 25px;
     margin-top:20px;
+    font-weight: 600;
 }
 

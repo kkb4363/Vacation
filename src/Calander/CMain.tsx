@@ -1,7 +1,7 @@
 import {addDays, startOfMonth, endOfMonth, endOfWeek, startOfWeek, format} from 'date-fns';
 import { useNavigate } from 'react-router';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { calState, IForm, isDarkAtom } from '../atom';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { calanderState, Iform, isDarkAtom } from '../atom';
 import { useMatch, PathMatch } from "react-router-dom";
 import { motion } from 'framer-motion';
 import styled from "styled-components";
@@ -11,15 +11,19 @@ import {useForm} from 'react-hook-form';
 const BigDay = styled(motion.div)`
 width:500px;
 height:500px;
+border-radius:100px;
 background-color:rgba(0,0,0,0.5);
 position:absolute;
-top:250px;
+top:150px;
 display:flex;
 left:0;
 margin:0 auto;
 right:0;
 position:fixed;
 color:white;
+button{
+    position:absolute;
+}
 `
 
 const Overlay = styled(motion.div)`
@@ -87,12 +91,11 @@ const CMain = (currentMonth:any) => {
         days = [];
     }
 
-    const setCalander = useSetRecoilState(calState);
-    const {register, handleSubmit, setValue} = useForm<IForm>();
-    const onWrite = ({today}:IForm) => {
-        setCalander(old => [{id:Date.now() , text:today}, ...old] );
+    const [Cal,setCal] = useRecoilState(calanderState);
+    const {register, handleSubmit, setValue} = useForm<Iform>();
+    const handleValid = ({text}:Iform) => {
+        setCal([{text:text, id:}])
     }
-    
 
     return(
         <div>
@@ -106,16 +109,20 @@ const CMain = (currentMonth:any) => {
         
         {isDark?
         (<BigDay style={{backgroundColor:'#808080', opacity:0.7}}>
-            <form className='BigDayWrapper' onSubmit={handleSubmit(onWrite)}>
-                    <input className='BigDayInput' {...register('today')} placeholder="Write whatever you want!"/>
-                    <button className='BigDayButton'>ADD</button>
+            <form className='BigDayWrapper'>
+                    <input className='BigDayInput' placeholder="Write whatever you want!"/>
+                    <button style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
+                    <button style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
+
             </form>
         </BigDay>) 
         : 
         (<BigDay>
-            <form className='BigDayWrapper' onSubmit={handleSubmit(onWrite)}>
-                    <input className='BigDayInput' {...register('today')} placeholder="Write whatever you want!"/>
-                    <button className='BigDayButton'>ADD</button>
+            <form className='BigDayWrapper'>
+                    <input className='BigDayInput' placeholder="Write whatever you want!"/>
+                    <button style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
+                    <button style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
+
             </form>
         </BigDay>)}
         

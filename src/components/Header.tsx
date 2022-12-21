@@ -16,6 +16,8 @@ justify-content:space-around;
 font-size:30px;
 font-weight:bold;
 color:#bababa;
+z-index:1;
+position:fixed;
 `
 
 function Header(){
@@ -33,8 +35,8 @@ return(
         <Link className="HeaderComponents" to='/calander'>
             Calander
         </Link>
-        <Link className="HeaderComponents" to='/third'>
-            Go To Third
+        <Link className="HeaderComponents" to='/checklist'>
+            Checklist
         </Link>
         <Link className="HeaderComponents" to='/four'>
             Go To Four

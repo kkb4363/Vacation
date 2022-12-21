@@ -14,7 +14,6 @@ display:flex;
 flex-direction:column;
 width:900px;
 height:900px;
-position:relative;
 `;
 
 

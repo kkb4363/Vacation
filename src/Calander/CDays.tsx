@@ -5,7 +5,7 @@ display:flex;
 justify-content:space-between;
 width:880px;
 height:60px;
-margin-top:80px;
+margin-top:130px;
 `
 
 const DaysDiv = styled.div`
