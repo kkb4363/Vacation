@@ -5,7 +5,8 @@ import Main from "../components/Main";
 import Calander from "../components/Calander";
 import Third from "../components/Third";
 import Login from "../components/Login";
-import NowLogin from "../components/NowLogin";
+
+
 
 
 
@@ -38,13 +39,7 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/login',
-                element:<Login/>,
-                children:[
-                    {
-                        path:'/login/done',
-                        element:<NowLogin/>,
-                    }
-                ]
+                element:<Login/>
             }
         ]
     }

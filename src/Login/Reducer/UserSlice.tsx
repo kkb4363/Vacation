@@ -1,22 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const UserSlice = createSlice({
     name: 'user',
     initialState:{
-        name:'',
-        id:'',
+        ID:'',
+        Password:'',
         isLogin:false,
     },
     reducers:{
-        loginUser:(state,action) => {
-            state.name = action.payload.name;
-            state.id = action.payload.id;
+        loginUser:(state,action:PayloadAction<{ID:string, Password:string}>) => {
+            state.ID = action.payload.ID;
+            state.Password = action.payload.Password;
             state.isLogin = true;
         },
 
         clearUser:(state) => {
-            state.name='';
-            state.id='';
+            state.ID='';
+            state.Password='';
             state.isLogin=false;
         }
     }
