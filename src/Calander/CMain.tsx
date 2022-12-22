@@ -53,7 +53,21 @@ const CMain = (currentMonth:any) => {
     const onOverlayClick = () => {
         Navigate('/calander');
     }
+
+    const [Cal,setCal] = useRecoilState(calanderState);
+    const {register, handleSubmit,setValue} = useForm<Iform>();
+    const handleValid = ({text}:Iform) => {
+        setCal((prev) => [...prev,{
+            id:DayPathMatch?.params.day ,text:text
+        }]);
+        setValue('text','');
+    }
     
+    
+    const onDelete = (id?:string) => {
+        setCal(Cal.filter(cal => cal.id != id));
+    } 
+
     let day = startDate;
     let days = [] as any;
     let line = [] as any;
@@ -62,7 +76,7 @@ const CMain = (currentMonth:any) => {
     while(day<=endDate){
         for(let i=0; i<7; i++){
             formattedDate = format(day,'d').padStart(2,'0').toString();
-            const Day = formattedDate;
+            const Day = format(day,'yyyyMMdd').toString();
             if(format(monthStart,'M') != format(day,'M')){
                 days.push(
                     <div className='divDay' key={day+'1'}>
@@ -74,9 +88,12 @@ const CMain = (currentMonth:any) => {
             }
             else{
                 days.push(
-                    <div onClick={() => onDayClick(Day+'')} className='divDay' key={day+'100'}>
+                    <div onClick={() => onDayClick(Day)} className='divDay' key={day+'100'}>
                         <span>
                             {formattedDate}
+                        </span>
+                        <span style={{position:'absolute',marginTop:'20px',fontSize:'12px',fontWeight:600,marginLeft:'3px'}}>
+                        {Cal.map(cal => cal.id === Day ? cal.text : null) }
                         </span>
                     </div>
                 )
@@ -91,12 +108,6 @@ const CMain = (currentMonth:any) => {
         days = [];
     }
 
-    const [Cal,setCal] = useRecoilState(calanderState);
-    const {register, handleSubmit, setValue} = useForm<Iform>();
-    const handleValid = ({text}:Iform) => {
-        setCal([{text:text, id:}])
-    }
-
     return(
         <div>
         {<div className='divWrapper'>
@@ -109,20 +120,18 @@ const CMain = (currentMonth:any) => {
         
         {isDark?
         (<BigDay style={{backgroundColor:'#808080', opacity:0.7}}>
-            <form className='BigDayWrapper'>
-                    <input className='BigDayInput' placeholder="Write whatever you want!"/>
-                    <button style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
-                    <button style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
-
+            <form onSubmit={handleSubmit(handleValid)} className='BigDayWrapper'>
+                    <input {...register('text')} className='BigDayInput' placeholder="Write whatever you want!"/>
+                    <button type='submit' style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
+                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
             </form>
         </BigDay>) 
         : 
         (<BigDay>
-            <form className='BigDayWrapper'>
-                    <input className='BigDayInput' placeholder="Write whatever you want!"/>
-                    <button style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
-                    <button style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
-
+            <form onSubmit={handleSubmit(handleValid)} className='BigDayWrapper'>
+                    <input {...register('text')} className='BigDayInput' placeholder="Write whatever you want!"/>
+                    <button type='submit' style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
+                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
             </form>
         </BigDay>)}
         

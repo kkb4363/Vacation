@@ -10,7 +10,7 @@ export interface Iform{
 }
 
 export interface ICal{
-    id:number;
+    id?:string;
     text:string;
 }
 
