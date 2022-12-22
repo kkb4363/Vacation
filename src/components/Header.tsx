@@ -4,7 +4,7 @@ import { isDarkAtom } from "../atom";
 import { BiBrightnessHalf } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import '../Style.css';
-import { FaGrinHearts } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
 import { useSelector } from "react-redux/es/exports";
 
 const Navbar = styled.div`
@@ -34,7 +34,7 @@ return(
     <Navbar>
         {user?.isLogin? (
             <span style={{fontSize:'15px',marginLeft:'-35px'}}>
-            <FaGrinHearts style={{position:'fixed',left:0}}/>
+            <FcLike style={{position:'fixed',left:0}}/>
             {`${user.ID}님 안녕하세요!`}
             </span>  
             ) : null}

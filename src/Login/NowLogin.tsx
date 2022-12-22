@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { clearUser } from "./Reducer/UserSlice";
+import { FcLikePlaceholder } from "react-icons/fc";
 
 const LoginWrapper = styled.div`
 width:500px;
@@ -36,6 +37,7 @@ function NowLogin(){
     }
     return(
         <LoginWrapper>
+            <FcLikePlaceholder style={{marginTop:'-150px',fontSize:'100px'}}/>
             <p>{user.ID}님 안녕하세요!</p>
             <button onClick={() => LogoutFunc()}>로그아웃</button>
         </LoginWrapper>
