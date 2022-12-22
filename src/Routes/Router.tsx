@@ -6,10 +6,6 @@ import Calander from "../components/Calander";
 import Checklist from "../components/Checklist";
 import Login from "../components/Login";
 
-
-
-
-
 const Router = createBrowserRouter([
     {
         path:'',

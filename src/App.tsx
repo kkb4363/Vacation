@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import { darkTheme, lightheme } from './theme';
 import Header from './components/Header';
 import { isDarkAtom } from './atom';

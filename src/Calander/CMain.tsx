@@ -58,7 +58,7 @@ const CMain = (currentMonth:any) => {
     const {register, handleSubmit,setValue} = useForm<Iform>();
     const handleValid = ({text}:Iform) => {
         setCal((prev) => [...prev,{
-            id:DayPathMatch?.params.day ,text:text
+            id:DayPathMatch?.params.day ,text:text+'\n'
         }]);
         setValue('text','');
     }
@@ -92,7 +92,7 @@ const CMain = (currentMonth:any) => {
                         <span>
                             {formattedDate}
                         </span>
-                        <span style={{position:'absolute',marginTop:'20px',fontSize:'12px',fontWeight:600,marginLeft:'3px'}}>
+                        <span style={{whiteSpace:'pre-wrap',position:'absolute',marginTop:'20px',fontSize:'12px',fontWeight:600,marginLeft:'3px'}}>
                         {Cal.map(cal => cal.id === Day ? cal.text : null) }
                         </span>
                     </div>
