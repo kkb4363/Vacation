@@ -8,19 +8,26 @@ import Router from './Routes/Router';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer from './Login/Reducer/Reducer';
+import {persistStore} from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import ReduxThunk from 'redux-thunk';
 
-
-const store = configureStore({reducer});
+const store = configureStore({reducer,
+middleware:[ReduxThunk]});
 const queryClient = new QueryClient();
 const rootNode = document.getElementById('root') as HTMLElement;
+
+const persistor = persistStore(store);
 
 ReactDOM.createRoot(rootNode).render(
 <React.StrictMode>
     <RecoilRoot>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
-    <RouterProvider router={Router}/>
-    </Provider>
+        <PersistGate persistor={persistor}>
+          <RouterProvider router={Router}/>
+        </PersistGate>
+      </Provider>
     </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>
