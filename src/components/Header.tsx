@@ -28,7 +28,6 @@ function Header(){
     setisDark(prev => !prev)
 }   
 let user = useSelector((state:any) => state.UserSlice);
-console.log(user.ID)
 return(
     <>
     <Navbar>

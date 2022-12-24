@@ -42,7 +42,6 @@ button{
 }
 `
 
-
 function NotLogin(){
     const dispatch = useDispatch();
     const [msg, setmsg] = useState('');
@@ -55,26 +54,22 @@ function NotLogin(){
             ID,
             Password
         }
-        axios.post('http://localhost:3000/users',body)
+        axios.get('http://localhost:3000/users')
         .then((res)=>{
-            console.log(res)
-            switch(res.status){
-                case 201:
-                    console.log('login');
-                    dispatch(loginUser(res.data));
-                    setmsg('');
-                    break;
-                case 400:
-                    setmsg('ID, Password가 비어있습니다');
-                    break;
-                case 401:
-                    setmsg('존재하지 않는 ID입니다');
-                    break;
-                case 402:
-                    setmsg('Password가 틀립니다.');
-                    break;
-                default:
-                    break;
+            console.log(res.data)
+            if(res.data.filter((user:{ID:string, Password:string}) => (user.ID == body.ID))[0].Password == body.Password){
+                axios.post('http://localhost:3000/users',body)
+                .then(res2 => {dispatch(loginUser(res2.data));})
+                console.log('로그인 완료');
+                setmsg('');
+                axios.delete('http://localhost:3000/users',{
+                    data:{ID:body.ID,
+                    Password:body.Password}
+                });
+            }
+            else{
+                console.log('ID 또는 비밀번호를 확인하세요');
+                setmsg('ID 또는 비밀번호를 확인해주세요');
             }
         })
         .catch((err) => console.log(err));
