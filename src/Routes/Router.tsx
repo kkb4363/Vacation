@@ -5,6 +5,7 @@ import Main from "../components/Main";
 import Calander from "../components/Calander";
 import Checklist from "../components/Checklist";
 import Login from "../components/Login";
+import Signup from "../Login/Signup";
 
 const Router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const Router = createBrowserRouter([
             {
                 path:'/login',
                 element:<Login/>
+            },
+            {  
+                    path:'signup',
+                    element:<Signup/> 
             }
         ]
     }

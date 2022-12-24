@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { loginUser } from './Reducer/UserSlice';
+import { Link } from "react-router-dom";
 
 const LoginWrapper = styled.div`
 width:500px;
@@ -22,7 +23,7 @@ justify-content:center;
 flex-direction:column;
 align-items:center;
 font-weight:600;
-span{
+span:first-child{
     font-size:25px;
     margin-bottom:20px;
 }
@@ -39,6 +40,12 @@ button{
     border-radius:30px;
     border:0px;
     background-color:#cc9900;
+    position:relative;
+}
+span:nth-child(2){
+    position:absolute;
+    margin-top:300px;
+    font-size:13px;
 }
 `
 
@@ -62,10 +69,6 @@ function NotLogin(){
                 .then(res2 => {dispatch(loginUser(res2.data));})
                 console.log('로그인 완료');
                 setmsg('');
-                axios.delete('http://localhost:3000/users',{
-                    data:{ID:body.ID,
-                    Password:body.Password}
-                });
             }
             else{
                 console.log('ID 또는 비밀번호를 확인하세요');
@@ -81,6 +84,8 @@ function NotLogin(){
         <LoginWrapper>
             <LoginForm onSubmit={onSubmitHandler}>
                     <span>Just Do It에 로그인 하세요</span>
+                    <span>Just Do It 아이디가 없습니까?</span>
+                    <Link style={{position:'absolute', marginTop:'340px',fontSize:'13px'}} to='/signup'>그럼 지금 만드세요!</Link>
                     <label htmlFor="id"></label>
                     <input required 
                             placeholder="ID" 
