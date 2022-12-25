@@ -62,20 +62,16 @@ function NotLogin(){
             Password
         }
         axios.get('http://localhost:3000/users')
-        .then((res)=>{
-            console.log(res.data)
-            if(res.data.filter((user:{ID:string, Password:string}) => (user.ID == body.ID))[0].Password == body.Password){
-                axios.post('http://localhost:3000/users',body)
-                .then(res2 => {dispatch(loginUser(res2.data));})
-                console.log('로그인 완료');
-                setmsg('');
-            }
-            else{
-                console.log('ID 또는 비밀번호를 확인하세요');
-                setmsg('ID 또는 비밀번호를 확인해주세요');
-            }
-        })
-        .catch((err) => console.log(err));
+        .then(
+            (res)=>(res.data.filter((uu:{ID:string}) => uu.ID == body.ID) != '') ? 
+            (
+            (res.data.filter((up:{Password:string}) => up.Password == body.Password) != '') &&
+                (
+                    axios.post('http://localhost:3000/users',body)
+                    .then(res2 => {dispatch(loginUser(res2.data));})
+                ) 
+            ):
+            setmsg('ID 또는 비밀번호를 확인해주세요'))
     };
     
 
