@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import { darkTheme, lightheme } from './theme';
-import Header from './components/Header';
+import Header from './Components/Header';
 import { isDarkAtom } from './atom';
 import { Outlet } from 'react-router-dom';
 

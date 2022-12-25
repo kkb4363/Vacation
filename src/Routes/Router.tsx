@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Four from "../components/Four";
-import Main from "../components/Main";
-import Calander from "../components/Calander";
-import Checklist from "../components/Checklist";
-import Login from "../components/Login";
+import Four from "../Components/Four";
+import Main from "../Components/Main";
+import Calander from "../Components/Calander";
+import Checklist from "../Components/Checklist";
+import Login from "../Components/Login";
 import Signup from "../Login/Signup";
 
 const Router = createBrowserRouter([
