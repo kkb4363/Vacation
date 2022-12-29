@@ -1,6 +1,12 @@
 import {atom} from 'recoil';
 import {recoilPersist} from 'recoil-persist';
 
+
+const {persistAtom} = recoilPersist({
+    key:'calanderLocal',
+    storage:localStorage,
+})
+
 export const isDarkAtom = atom({
     key:'isDark',  // State 이름(고유)
     default:false, // 기본값
@@ -15,13 +21,19 @@ export interface ICal{
     text:string;
 }
 
-const {persistAtom} = recoilPersist({
-    key:'calanderLocal',
-    storage:localStorage,
-})
+export interface ICheck{
+    id:number
+    checked?:boolean;
+}
 
 export const calanderState = atom<ICal[]>({
     key:'Cal',
+    default:[],
+    effects_UNSTABLE:[persistAtom],
+})
+
+export const checklistState = atom<ICheck[]>({
+    key:'Check',
     default:[],
     effects_UNSTABLE:[persistAtom],
 })

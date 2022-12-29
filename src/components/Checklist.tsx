@@ -1,5 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { FiCheckCircle } from "react-icons/fi";
+import { checklistState } from "../atom";
+import { useRecoilState } from "recoil";
+
 const Table = styled.table`
 display:flex;
 left:0;
@@ -42,17 +46,21 @@ function Checklist(){
         {id:18, title:'방 정리 5분 하기'},
         {id:19, title:'지나가다 보이는 쓰레기 한 개라도 줍기'}
     ]
-
+    
+    const [currentItems, setCurrentItems] = useRecoilState(checklistState);
     const [checkItems, setCheckItems] = useState([] as any);
-
+    
     const onCheck = (checked:boolean, id:number) => {
         if(checked){
             setCheckItems((prev:[prev:any]) => [...prev, id])
+            setCurrentItems(checkItems);
         }
         else{
             setCheckItems(checkItems.filter((el: number)=> el != id ))
+            setCurrentItems(checkItems);
         }
     }
+    console.log(currentItems);
     return(
         <Table>
             <tbody>
@@ -61,10 +69,11 @@ function Checklist(){
                         <td>
                             <input type='checkbox'
                                 onChange={(e) => onCheck(e.target.checked, data.id)}
-                                checked={checkItems.includes(data.id)? true:false}/>
+                                checked={checkItems.includes(data.id) ? true:false}/>
                         </td>
                         <TD>
                             {data.title}
+                            
                         </TD>
                     </tr>
                 ))}

@@ -1,12 +1,12 @@
 import {addDays, startOfMonth, endOfMonth, endOfWeek, startOfWeek, format} from 'date-fns';
 import { useNavigate } from 'react-router';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { calanderState, Iform, isDarkAtom } from '../atom';
 import { useMatch, PathMatch } from "react-router-dom";
 import { motion } from 'framer-motion';
 import styled from "styled-components";
 import {useForm} from 'react-hook-form';
-
+import { FaHamburger } from "react-icons/fa";
 
 const BigDay = styled(motion.div)`
 width:500px;
@@ -68,6 +68,13 @@ const CMain = (currentMonth:any) => {
         setCal(Cal.filter(cal => cal.id != id));
     } 
 
+    const onChicken = (id?:string) => {
+        setCal(Cal.filter(cal => cal.id != id));
+        setCal((prev) => [...prev,{
+            id:DayPathMatch?.params.day , text:`치팅데이`
+        }])
+    }
+
     let day = startDate;
     let days = [] as any;
     let line = [] as any;
@@ -94,6 +101,7 @@ const CMain = (currentMonth:any) => {
                         </span>
                         <span style={{whiteSpace:'pre-wrap',position:'absolute',marginTop:'20px',fontSize:'12px',fontWeight:600,marginLeft:'3px'}}>
                         {Cal.map(cal => cal.id === Day ? cal.text : null) }
+                        {Cal.map(cal => cal.id === Day ? cal.text.includes('치팅데이') ? <FaHamburger/> : null : null)}
                         </span>
                     </div>
                 )
@@ -122,16 +130,18 @@ const CMain = (currentMonth:any) => {
         (<BigDay style={{backgroundColor:'#808080', opacity:0.7}}>
             <form onSubmit={handleSubmit(handleValid)} className='BigDayWrapper'>
                     <input {...register('text')} className='BigDayInput' placeholder="Write whatever you want!"/>
-                    <button type='submit' style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
-                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
+                    <button type='submit' style={{marginTop:'500px',marginLeft:'-250px'}} className='BigDayButton'>ADD</button>
+                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-10px'}} className='BigDayButton'>DELETE</button>
+                    <button onClick={()=> onChicken(DayPathMatch?.params.day)} className='BigDayButton' style={{marginTop:'500px',marginRight:'-340px', backgroundColor:'#FF5733'}}>chicken</button>
             </form>
         </BigDay>) 
         : 
         (<BigDay>
             <form onSubmit={handleSubmit(handleValid)} className='BigDayWrapper'>
                     <input {...register('text')} className='BigDayInput' placeholder="Write whatever you want!"/>
-                    <button type='submit' style={{marginTop:'500px',marginLeft:'-100px'}} className='BigDayButton'>ADD</button>
-                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-200px'}} className='BigDayButton'>DELETE</button>
+                    <button type='submit' style={{marginTop:'500px',marginLeft:'-250px'}} className='BigDayButton'>ADD</button>
+                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-10px'}} className='BigDayButton'>DELETE</button>
+                    <button onClick={()=> onChicken(DayPathMatch?.params.day)} className='BigDayButton' style={{marginTop:'500px',marginRight:'-340px', backgroundColor:'#FF5733'}}>chicken</button>
             </form>
         </BigDay>)}
         

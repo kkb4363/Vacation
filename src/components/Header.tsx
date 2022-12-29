@@ -25,7 +25,7 @@ position:fixed;
 function Header(){
     const setisDark = useSetRecoilState(isDarkAtom);
     const OnDark = () => {
-    setisDark(prev => !prev)
+    setisDark(prev  => !prev)
 }   
 let user = useSelector((state:any) => state.UserSlice);
 return(
