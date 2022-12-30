@@ -6,7 +6,7 @@ import NowLogin from "../Login/NowLogin";
 
 function Login(){
     let user = useSelector((state:any) => state.UserSlice);
-    console.log(user)
+    
     return(
         <>
         {user.isLogin? <NowLogin/> : <NotLogin/>}

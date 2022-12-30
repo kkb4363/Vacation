@@ -144,12 +144,9 @@ const CMain = (currentMonth:any) => {
                     <button onClick={()=> onChicken(DayPathMatch?.params.day)} className='BigDayButton' style={{marginTop:'500px',marginRight:'-340px', backgroundColor:'#FF5733'}}>chicken</button>
             </form>
         </BigDay>)}
-        
-        
         </> : null}
         </div>
     )
-
 }
 
 

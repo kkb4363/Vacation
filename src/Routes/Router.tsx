@@ -6,6 +6,7 @@ import Calander from "../Components/Calander";
 import Checklist from "../Components/Checklist";
 import Login from "../Components/Login";
 import Signup from "../Login/Signup";
+import Todolist from "../Components/Four";
 
 const Router = createBrowserRouter([
     {
@@ -31,8 +32,8 @@ const Router = createBrowserRouter([
                 element:<Checklist/>
             },
             {
-                path:'/four',
-                element:<Four/>
+                path:'/todolist',
+                element:<Todolist/>
             },
             {
                 path:'/login',
