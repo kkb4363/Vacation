@@ -72,7 +72,6 @@ function App() {
 
   return (
   <>
-  
   <ThemeProvider theme={isDark? darkTheme : lightheme}>
   <GlobalStyle/>
   <Header/>

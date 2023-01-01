@@ -20,7 +20,6 @@ const rootNode = document.getElementById('root') as HTMLElement;
 const persistor = persistStore(store);
 
 ReactDOM.createRoot(rootNode).render(
-<React.StrictMode>
     <RecoilRoot>
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
@@ -30,7 +29,6 @@ ReactDOM.createRoot(rootNode).render(
       </Provider>
     </QueryClientProvider>
     </RecoilRoot>
-  </React.StrictMode>
 );
 
 reportWebVitals();

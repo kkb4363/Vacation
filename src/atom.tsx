@@ -18,7 +18,7 @@ export interface Iform{
 
 export interface ITodo{
     text:string,
-    id:number
+    id:string
 }
 
 export interface ICal{
@@ -43,7 +43,7 @@ export const checklistState = atom<ICheck[]>({
     effects_UNSTABLE:[persistAtom],
 })
 
-export const todoState = atom<ITodo[]>({
+export const todoState = atom({
     key:'todo',
-    default:[]  
+    default: ["a", "b", "c", "d", "e", "f"]
 })

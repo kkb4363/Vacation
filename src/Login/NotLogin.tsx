@@ -65,11 +65,14 @@ function NotLogin(){
         .then(
             (res)=>(res.data.filter((uu:{ID:string}) => uu.ID == body.ID) != '') ? 
             (
-            (res.data.filter((up:{Password:string}) => up.Password == body.Password) != '') &&
+            (
+                res.data.filter((u:{ID:string,Password:string}) => u.ID == body.ID)[0].Password === body.Password) ?
                 (
                     axios.post('http://localhost:3000/users',body)
                     .then(res2 => {dispatch(loginUser(res2.data));})
                 ) 
+
+                :setmsg('비밀번호를 확인해주세요')
             ):
             setmsg('ID 또는 비밀번호를 확인해주세요'))
     };
