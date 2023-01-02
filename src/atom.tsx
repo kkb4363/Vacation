@@ -16,19 +16,9 @@ export interface Iform{
     text:string;
 }
 
-export interface ITodo{
-    text:string,
-    id:string
-}
-
 export interface ICal{
     id?:string;
     text:string;
-}
-
-export interface ICheck{
-    id:number
-    checked?:boolean;
 }
 
 export const calanderState = atom<ICal[]>({
@@ -37,13 +27,15 @@ export const calanderState = atom<ICal[]>({
     effects_UNSTABLE:[persistAtom],
 })
 
-export const checklistState = atom<ICheck[]>({
-    key:'Check',
-    default:[],
-    effects_UNSTABLE:[persistAtom],
-})
+interface ITodo{
+    [key: string]:string[];
+}
 
-export const todoState = atom({
+export const todoState = atom<ITodo>({
     key:'todo',
-    default: ["a", "b", "c", "d", "e", "f"]
+    default:{
+        TODO : ['a','b'],
+        DOING : ['c', 'd', 'e'],
+        DONE : ['f']
+    }
 })

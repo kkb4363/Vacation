@@ -47,20 +47,17 @@ function Checklist(){
         {id:19, title:'지나가다 보이는 쓰레기 한 개라도 줍기'}
     ]
     
-    const [currentItems, setCurrentItems] = useRecoilState(checklistState);
     const [checkItems, setCheckItems] = useState([] as any);
     
     const onCheck = (checked:boolean, id:number) => {
         if(checked){
             setCheckItems((prev:[prev:any]) => [...prev, id])
-            setCurrentItems(checkItems);
         }
         else{
             setCheckItems(checkItems.filter((el: number)=> el != id ))
-            setCurrentItems(checkItems);
         }
     }
-    console.log(currentItems);
+    
     return(
         <Table>
             <tbody>

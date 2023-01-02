@@ -33,6 +33,12 @@ const Router = createBrowserRouter([
             {
                 path:'/todolist',
                 element:<Todolist/>,
+                children:[
+                    {
+                        path:'/todolist/:boardId',
+                        element:<Todolist/>
+                    }
+                ]
             },
             {
                 path:'/login',
