@@ -3,7 +3,8 @@ import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
 interface ITodoCard{
-    todo:string;
+    todoID:number;
+    todoText:string;
     index:number;
 }
 
@@ -16,15 +17,15 @@ background-color:white;
 border:1px solid black;
 `
 
-function TodoCard({todo,index}: ITodoCard){
+function TodoCard({todoID,todoText,index}: ITodoCard){
     return(
-        <Draggable draggableId={todo} index={index}>
+        <Draggable draggableId={todoID+' '} index={index}>
             {(magic) => (
                 <Card
                 ref={magic.innerRef}
                 {...magic.draggableProps}
                 {...magic.dragHandleProps}>
-                {todo}
+                {todoText}
                 </Card>
             )}
         </Draggable>

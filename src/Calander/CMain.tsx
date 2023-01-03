@@ -58,7 +58,7 @@ const CMain = (currentMonth:any) => {
     const {register, handleSubmit,setValue} = useForm<Iform>();
     const handleValid = ({text}:Iform) => {
         setCal((prev) => [...prev,{
-            id:DayPathMatch?.params.day ,text:text+'\n'
+            id:DayPathMatch?.params.day ,text:text+'\n', key:new Date()+''
         }]);
         setValue('text','');
     }
@@ -71,7 +71,7 @@ const CMain = (currentMonth:any) => {
     const onChicken = (id?:string) => {
         setCal(Cal.filter(cal => cal.id != id));
         setCal((prev) => [...prev,{
-            id:DayPathMatch?.params.day , text:`치팅데이`
+            id:DayPathMatch?.params.day , text:`치팅데이`, key:new Date()+''
         }])
     }
 

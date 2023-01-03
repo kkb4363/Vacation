@@ -16,9 +16,12 @@ export interface Iform{
     text:string;
 }
 
+
+
 export interface ICal{
     id?:string;
     text:string;
+    key:string;
 }
 
 export const calanderState = atom<ICal[]>({
@@ -27,15 +30,23 @@ export const calanderState = atom<ICal[]>({
     effects_UNSTABLE:[persistAtom],
 })
 
-interface ITodo{
-    [key: string]:string[];
+
+
+interface ITodoState{
+    [key: string]:ITodo[];
 }
 
-export const todoState = atom<ITodo>({
+export const todoState = atom<ITodoState>({
     key:'todo',
     default:{
-        TODO : ['a','b'],
-        DOING : ['c', 'd', 'e'],
-        DONE : ['f']
+        TODO : [],
+        DOING : [],
+        DONE : []
     }
 })
+
+
+export interface ITodo{
+    id:number;
+    text:string;
+}

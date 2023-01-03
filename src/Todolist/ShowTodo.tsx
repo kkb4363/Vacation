@@ -15,7 +15,7 @@ margin:0 auto;
 justify-content:center;
 align-items:center;
 height:100vh;
-margin-top:-100px;
+margin-top:50px;
 `
 const Boards = styled.div`
 display:flex;
@@ -37,14 +37,15 @@ function ShowTodo(){
     
     const onDragEnd = (info : DropResult) => {
         const {destination , draggableId, source} = info;
-        console.log(info);
+        
     if(!destination) return;
     if(destination?.droppableId === source.droppableId){
         //same board movement
         setTodos((allboards) => {
             const boardCopy = [...allboards[source.droppableId]];
+            const taskObj = boardCopy[source.index];
             boardCopy.splice(source.index,1);
-            boardCopy.splice(destination?.index, 0, draggableId);
+            boardCopy.splice(destination?.index, 0, taskObj);
             return{
                 ...allboards,
                 [source.droppableId]:boardCopy
@@ -55,10 +56,11 @@ function ShowTodo(){
         //cross board movement
         setTodos((allboards) => {
             const sourceBoard = [...allboards[source.droppableId]];
+            const taskObj = sourceBoard[source.index];
             const destinationBoard = 
             [...allboards[destination.droppableId]];
             sourceBoard.splice(source.index, 1);
-            destinationBoard.splice(destination?.index, 0, draggableId);
+            destinationBoard.splice(destination?.index, 0, taskObj);
             return{
                 ...allboards,
                 [source.droppableId]: sourceBoard,

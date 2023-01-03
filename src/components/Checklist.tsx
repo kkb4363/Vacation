@@ -1,8 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { FiCheckCircle } from "react-icons/fi";
-import { checklistState } from "../atom";
-import { useRecoilState } from "recoil";
 
 const Table = styled.table`
 display:flex;
