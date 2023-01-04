@@ -4,6 +4,7 @@ import TodoCard from "./TodoCard";
 import { ITodo, todoState, Iform } from "../atom";
 import { useSetRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
+import { BsFillXCircleFill } from "react-icons/bs";
 
 
 const Wrapper = styled.div`
@@ -36,6 +37,10 @@ const ToInput = styled.input`
     height:30px;
 `
 
+const CardWrapper = styled.div`
+
+`
+
 interface IBoard{
     todos:ITodo[];
     boardId:string;
@@ -55,6 +60,16 @@ function TodoBoard({todos, boardId} : IBoard){
                 [boardId] : [newTodo, ...all[boardId]],
             }
         })
+        setValue('text', '');
+    }
+
+    const ondelete = (todoID:number) => {
+        setTodos((all) => {
+            return{
+                ...all,
+                [boardId] : [...all[boardId].filter((id)=> id.id != todoID)]
+            }
+        })
     }
 
     return(
@@ -70,7 +85,17 @@ function TodoBoard({todos, boardId} : IBoard){
                     {(magic) => (
                         <Board ref={magic.innerRef} {...magic.droppableProps}>
                             {todos.map((todo,index)=>(
-                            <TodoCard key={todo.id} index={index} todoID={todo.id} todoText={todo.text}/>    
+                                <CardWrapper>
+                                    <TodoCard 
+                                    key={todo.id} 
+                                    index={index} 
+                                    todoID={todo.id} 
+                                    todoText={todo.text}/>
+                                    <BsFillXCircleFill
+                                    onClick={() => ondelete(todo.id)}
+                                    style={{position:'absolute',marginTop:'-32px',marginLeft:'330px',cursor:'pointer'}}/>
+                                </CardWrapper>
+                        
                             ))}
                         {magic.placeholder}
                     </Board>

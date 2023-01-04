@@ -15,9 +15,12 @@ margin-bottom:5px;
 padding:10px 10px;
 background-color:white;
 border:1px solid black;
+position:relative;
 `
 
+
 function TodoCard({todoID,todoText,index}: ITodoCard){
+
     return(
         <Draggable draggableId={todoID+' '} index={index}>
             {(magic) => (

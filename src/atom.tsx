@@ -3,7 +3,7 @@ import {recoilPersist} from 'recoil-persist';
 
 
 const {persistAtom} = recoilPersist({
-    key:'calanderLocal',
+    key:'LocalStorage',
     storage:localStorage,
 })
 
@@ -42,7 +42,9 @@ export const todoState = atom<ITodoState>({
         TODO : [],
         DOING : [],
         DONE : []
-    }
+    },
+    effects_UNSTABLE:[persistAtom],
+
 })
 
 
