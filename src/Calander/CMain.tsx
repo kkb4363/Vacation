@@ -9,12 +9,12 @@ import {useForm} from 'react-hook-form';
 import { FaHamburger } from "react-icons/fa";
 
 const BigDay = styled(motion.div)`
-width:500px;
+width:800px;
 height:500px;
-border-radius:100px;
+border-radius:20px;
 background-color:rgba(0,0,0,0.5);
 position:absolute;
-top:150px;
+top:200px;
 display:flex;
 left:0;
 margin:0 auto;
@@ -129,19 +129,19 @@ const CMain = (currentMonth:any) => {
         {isDark?
         (<BigDay style={{backgroundColor:'#808080', opacity:0.7}}>
             <form onSubmit={handleSubmit(handleValid)} className='BigDayWrapper'>
-                    <input {...register('text')} className='BigDayInput' placeholder="Write whatever you want!"/>
-                    <button type='submit' style={{marginTop:'500px',marginLeft:'-250px'}} className='BigDayButton'>ADD</button>
-                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-10px'}} className='BigDayButton'>DELETE</button>
-                    <button onClick={()=> onChicken(DayPathMatch?.params.day)} className='BigDayButton' style={{marginTop:'500px',marginRight:'-340px', backgroundColor:'#FF5733'}}>chicken</button>
+                    <input {...register('text')} className='BigDayInput' placeholder="자유롭게 작성해 보세요!"/>
+                    <button type='submit' style={{marginTop:'500px',marginLeft:'-250px'}} className='BigDayButton'>작성하기</button>
+                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-10px'}} className='BigDayButton'>삭제하기</button>
+                    <button onClick={()=> onChicken(DayPathMatch?.params.day)} className='BigDayButton' style={{marginTop:'500px',marginRight:'-340px', backgroundColor:'#fa8072'}}>치팅데이</button>
             </form>
         </BigDay>) 
         : 
         (<BigDay>
             <form onSubmit={handleSubmit(handleValid)} className='BigDayWrapper'>
-                    <input {...register('text')} className='BigDayInput' placeholder="Write whatever you want!"/>
-                    <button type='submit' style={{marginTop:'500px',marginLeft:'-250px'}} className='BigDayButton'>ADD</button>
-                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-10px'}} className='BigDayButton'>DELETE</button>
-                    <button onClick={()=> onChicken(DayPathMatch?.params.day)} className='BigDayButton' style={{marginTop:'500px',marginRight:'-340px', backgroundColor:'#FF5733'}}>chicken</button>
+                    <input {...register('text')} className='BigDayInput' placeholder="자유롭게 작성해 보세요!"/>
+                    <button type='submit' style={{marginTop:'500px',marginLeft:'-250px'}} className='BigDayButton'>작성하기</button>
+                    <button onClick={()=> onDelete(DayPathMatch?.params.day)} style={{marginTop:'500px',marginRight:'-10px'}} className='BigDayButton'>삭제하기</button>
+                    <button onClick={()=> onChicken(DayPathMatch?.params.day)} className='BigDayButton' style={{marginTop:'500px',marginRight:'-340px', backgroundColor:'#fa8072'}}>치팅데이</button>
             </form>
         </BigDay>)}
         </> : null}

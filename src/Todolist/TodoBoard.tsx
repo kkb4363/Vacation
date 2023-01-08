@@ -5,6 +5,7 @@ import { ITodo, todoState, Iform } from "../atom";
 import { useSetRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
 import { BsFillXCircleFill } from "react-icons/bs";
+import { format } from "date-fns";
 
 
 const Wrapper = styled.div`
@@ -47,6 +48,9 @@ interface IBoard{
 }
 
 function TodoBoard({todos, boardId} : IBoard){
+    const today = format(new Date(),'dd');
+    const saveday = today;
+    
     const setTodos = useSetRecoilState(todoState);
     const {register, setValue, handleSubmit} = useForm<Iform>();
     const onValid = ({text}:Iform) => {
